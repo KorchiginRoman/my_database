@@ -6,7 +6,7 @@ SELECT a.name AS 'Автор', b.name AS 'Произведение', b.`year` AS
 FROM bibliography b 
 JOIN bibliography_author ba  ON b.id  = ba.bibliography_id 
 JOIN author a ON a.id = ba.author_id 
-WHERE a.id = 3
+WHERE a.id = 7
 ORDER BY b.`year`;
 
 -- 2. Выбираем ТОП-3 автора, произведений которого больше всего в библиотеке.
@@ -64,7 +64,7 @@ SELECT b.name AS 'Произведение',  b2.title AS 'Книга'
 FROM bibliography b 
 JOIN bibliography_books bb ON bb.bibliography_id = b.id
 JOIN books b2 ON b2.id = bb.books_id 
-WHERE b.name REGEXP 'гуд';
+WHERE b.name REGEXP 'скара';
 
 -- Можно предположить, что название произведений может повторяться у разных авторов. 
 -- Джойним авторов для исключения данной ситуации.
@@ -75,7 +75,7 @@ JOIN bibliography_books bb ON bb.bibliography_id = b.id
 JOIN books b2 ON b2.id = bb.books_id 
 JOIN author_books ab ON ab.books_id = b2.id
 JOIN author a ON ab.author_id = a.id 
-WHERE b.name REGEXP '^пох';
+WHERE b.name REGEXP '^скара';
 
 -- 8. Должник.
 SELECT CONCAT (o.name,'  ' ,o.lastname) AS 'Должник'
